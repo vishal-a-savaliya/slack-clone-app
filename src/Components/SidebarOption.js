@@ -1,9 +1,34 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import db from '../Firebase';
 import "./SidebarOption.css"
 
-function SidebarOption({ Icon, title }) {
+function SidebarOption({ Icon, title, id, addChannelOption }) {
+    
+    const history = useHistory();
+
+    const selectChannel = () =>{
+        if(id){
+            history.push(`/room/${id}`);
+        }else{
+            history.push(title);
+        }
+
+    };
+
+    const addChannel = ()=>{
+        const channelName = prompt('please enter channel name');
+
+        if(channelName){
+            db.collection('rooms').add({
+                name:channelName,
+            })
+        }
+
+    };
+
     return (
-        <div className="sidebaroption">
+        <div className="sidebaroption" onClick={addChannelOption ? addChannel : selectChannel}>
             {Icon && <Icon className="sidebaroption__icon" />}  {/*This pass Icon if passed in props */}
           
             {Icon ? 

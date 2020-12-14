@@ -1,12 +1,19 @@
 this is react js base project that bulid with  
 
 React js
+
 Google User authentication (firebase)
+
 React Context API ( Redux )
+
 React Router
+
 Material UI 
+
 CSS variables
+
 Deploy it with Firebase
+
 Use of real-time database ( Firebase)
 
 

@@ -18,10 +18,12 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMoreOutlined';
 import AddIcon from '@material-ui/icons/Add';
 
 import db from '../Firebase';
+import { useStateValue } from '../StateProvider';
 
 function Sidebar() {
 
     const [channels, setChannels] = useState([]);
+    const [{user}] = useStateValue();
 
     useEffect(()=>{
             // this runs when the sidebar component loads as well as when the variables provided in [] is changed 
@@ -45,7 +47,7 @@ function Sidebar() {
                     <h2>vs apps</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                     vs leitan
+                        {user?.displayName}
                     </h3>
                 </div> 
                 <CreateIcon />
@@ -63,10 +65,12 @@ function Sidebar() {
             <SidebarOption Icon={ExpandMoreIcon} title="Channels" />
             <hr />
             <SidebarOption Icon={AddIcon} addChannelOption title="Add channels"/>
+            <div className="Channels">
 
             {channels.map(channel => (
                 <SidebarOption title = {channel.name} id={channel.id} />
             ))}
+            </div>
             
         </div>
     )

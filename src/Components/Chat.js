@@ -30,8 +30,8 @@ function Chat() {
             )
     }, [roomId]);
 
-    console.log(roomDetails);
-    // console.log("MSSEGES >>>>",roomMassages);
+    // console.log(roomDetails);
+    //console.log("MSSEGES >>>>",roomMassages);
 
     return (
         <div className="chat">
